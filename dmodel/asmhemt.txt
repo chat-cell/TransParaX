@@ -1,0 +1,57 @@
+Options EnableSpareRemoval=no Temp = 25 ASCII_Rawfile=yes UseNutmegFormat=yes
+; Simulation File for ASM-HEMT Verilog-A model in ADS syntax
+; ----------------------------------------------------------------
+define ASM_HEMT_MODELING (D G S B DT )
+; measurement contact resistances (for docu purposes)
+; RtotalPort1 = 0.4
+; RtotalPort2 = 0.4
+; measurement conditions for Nonlin.NWA (for docu purposes)
+; R_Source = 50
+; R_Load = 50
+; X_Load = 0
+; Cterm_P1 = 1E-18
+; Lterm_P1 = 1E-15
+; Cterm_P2 = 1E-18
+; Lterm_P2 = 1E-15
+; termination of temperature node
+R:R_DT DT 0 R=(1T)
+;
+; ===========Begin of Model===================================
+;
+; -----------Model Validity Information ----------------------
+;
+; ------------------------------------------------------------
+;external Resistances for ASM HEMT model
+R:RS S Si R=0.001
+R:RG G Gi R=0.001
+R:RD D Di R=0.001
+;external Inductances for ASM HEMT model
+L:LS Si Sii L=3.475E-12
+L:LG Gi Gii L=1.172E-11
+L:LD Di Dii L=1.003E-13
+C:Cp11 G S C=1E-15
+C:Cp22 D S C=1.4E-13
+C:Cp12 G D C=8E-15
+MAIN:Q1 Dii Gii Sii B DT
+; model name: asmhemt_1_0_1
+model MAIN asmhemt_1_0_1 tnom =25 shmod =1 gatemod =1 rdsmod =1 rgatemod =1 trapmod =0 fp1mod =0 fp2mod =0 fp3mod =0 fp4mod =0 fnmod =0 tnmod =0 l =1.5E-07 w =0.0001 nf =8 ngcon =1 xgw =5.531E-06 lsg =1E-06 ldg =1.7E-06 tbar =1.6E-08 epsilon =1.066E-10 njgs =2.714 njgd =3.039 igsdio =0.1156 igddio =8.888 ktgs =-2.741E-09 ktgd =0 rshg =0.001 voff =-2.02 u0 =0.101 ua =4.8E-08 ub =2.334E-19 vsat =190000.0 delta =2.001 at =4.807 ute =-0.8 lambda =0.0025 eta0 =0.098 vdscale =5.2 kt1 =-0.1173 thesat =1.12 nfactor =1.095 cdscd =0 gamma0i =2.12E-12 gamma1i =3.73E-12 imin =1E-15 rth0 =29 cth0 =1E-09 cgso =5.557E-13 cgdo =1.733E-13 cdso =4.649E-17 cgdl =3.903E-15 vdsatcv =40.33 cbdo =1E-15 cbso =1E-15 cbgo =1E-15 cfg =5.5E-14 cfd =3.938E-18 cfgd =2E-14 cfgdsm =1E-24 cfgd0 =1.092E-15 cj0 =1.188E-12 vbi =1.487 ktvbi =0 ktcfg =0 ktcfgd =0 cfp1scale =0 cfp2scale =0 cfp3scale =0 cfp4scale =0 csubscalei =0 csubscale1 =0 csubscale2 =0 csubscale3 =0 csubscale4 =0 vsataccs =5E+04 ns0accs =5E+17 ns0accd =5E+17 k0accs =0 k0accd =0 u0accs =0.155 u0accd =0.155 mexpaccs =2 mexpaccd =2 rsc =0.00025 rdc =1E-05 kns0 =0.25 ats =-3.31 utes =-3.16 uted =-3.566 krsc =0.00025 krdc =1E-05 cdlag =1E-06 rdlag =1E+06 idio =1 atrapvoff =-2.02 btrapvoff =-2.02 atrapeta0 =0.098 btrapeta0 =0.098 atraprs =0.1 btraprs =0.6 atraprd =0.5 btraprd =0.6 rtrap1 =1 rtrap2 =1 ctrap1 =1E-05 ctrap2 =1E-06 a1 =0.1 vofftr =1E-09 cdscdtr =1E-15 eta0tr =1E-15 rontr1 =1E-12 rontr2 =1E-13 rontr3 =1E-13 rtrap3 =1 ctrap3 =0.0001 vatrap =10 wd =0.016 vdlr1 =2 vdlr2 =20 talpha =1 vtb =250 deltax =0.01 lfp1 =1E-10 dfp1 =5E-08 iminfp1 =1E-15 vofffp1 =-25 ktfp1 =0.05 u0fp1 =0.1 vsatfp1 =1E+05 nfactorfp1 =0.5 cdscdfp1 =0 eta0fp1 =1E-09 vdscalefp1 =10 gamma0fp1 =2.12E-12 gamma1fp1 =3.73E-12 lfp2 =1E-10 dfp2 =1E-07 iminfp2 =1E-15 vofffp2 =-50 ktfp2 =0.05 u0fp2 =0.1 vsatfp2 =1E+05 nfactorfp2 =0.5 cdscdfp2 =0 eta0fp2 =1E-09 vdscalefp2 =10 gamma0fp2 =2.12E-12 gamma1fp2 =3.73E-12 lfp3 =1E-10 dfp3 =1.5E-07 iminfp3 =1E-15 vofffp3 =-75 ktfp3 =0.05 u0fp3 =0.1 vsatfp3 =1E+05 nfactorfp3 =0.5 cdscdfp3 =0 eta0fp3 =1E-09 vdscalefp3 =10 gamma0fp3 =2.12E-12 gamma1fp3 =3.73E-12 lfp4 =1E-10 dfp4 =2E-07 iminfp4 =1E-15 vofffp4 =-100 ktfp4 =0.05 u0fp4 =0.1 vsatfp4 =1E+05 nfactorfp4 =0.5 cdscdfp4 =0 eta0fp4 =1E-09 vdscalefp4 =10 gamma0fp4 =2.12E-12 gamma1fp4 =3.73E-12 mz =0.952 aj =0.09907 dj =1.759 adosi =0 bdosi =1 qm0i =0.001 adosfp1 =0 bdosfp1 =1 qm0fp1 =0.001 adosfp2 =0 bdosfp2 =1 qm0fp2 =0.001 adosfp3 =0 bdosfp3 =1 qm0fp3 =0.001 adosfp4 =0 bdosfp4 =1 qm0fp4 =0.001 noia =1.5E-11 noib =0 noic =0 ef =1 tnsc =1E+27 gdsmin =1E-12
+end ASM_HEMT_MODELING
+define DC_MODELING (D G T )
+;The following network emulates the DC losses during the measurements.
+R:R_ser1 G Gi R=0.4
+R:R_ser2 D Di R=0.4
+;---call the subcircuit description of the transistor,
+; as defined in Tab 'Circuit' of this model file
+ASM_HEMT_MODELING:X1 Di Gi 0 0 T
+end DC_MODELING
+DC_MODELING:XCKT n1 n2 n3
+; START SOURCES
+V_Source:VDGROUND n1 0 Vdc=0
+V_Source:VGGROUND n2 0 Vdc=0
+; END SOURCES
+R:RO3 n3 0 R=100MEG
+SweepPlan:swp1 Start=-4 Stop=0 Step=0.1
+SweepPlan:swp2 Start=0 Stop=15 Step=0.2
+DC:dc1 SweepPlan="swp1" SweepVar="VGGROUND.Vdc"
+ParamSweep:ct1 SimInstanceName="dc1" SweepPlan=swp2 SweepVar="VDGROUND.Vdc"
+
